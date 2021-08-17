@@ -1,4 +1,5 @@
-## Setting up NadekoBot on Pi 3/4
+## Setting up NadekoBot on Pi 3/4 (Not working for v3)
+## Prerequisite installer is the only thing working
 
 | Table of Contents                                   |
 | :-------------------------------------------------- |
