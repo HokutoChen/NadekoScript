@@ -13,7 +13,7 @@ rm -rf nadekobot_old 1>/dev/null 2>&1
 mv -fT nadekobot nadekobot_old 1>/dev/null 2>&1
 
 # clone new version
-git clone -b v3 --recursive --depth 1 https://gitlab.com/Kwoth/nadekobot
+git clone -b v3 --recursive --depth 1 https://github.com/HokutoChen/NadekoV3
 cd nadekobot
 
 # build
