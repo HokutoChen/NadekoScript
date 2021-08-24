@@ -12,7 +12,7 @@ while true; do
   esac
 done
 
-cd $HOME/nadekobot/src/NadekoBot
+cd $root/nadekobot/src/NadekoBot
 mv credentials.json credentials.json.old
 
 echo "Please enter your bot token"
@@ -20,7 +20,7 @@ echo "(It is not bot secret, it should be ~59 characters long.):
 echo ""
 read token
 echo ""
-echo "Saved '$token' as your bot's token."
+echo -e "Saved $token as your bot's token."
 echo ""
 echo "----------"
 echo ""
@@ -30,7 +30,7 @@ echo "(Refer to the guide, it will be bot's owner ID.):"
 echo ""
 read ownerid
 echo ""
-echo "Saved '$ownerid' as owner's ID."
+echo -e "Saved $ownerid as owner's ID."
 echo ""
 echo "----------"
 echo ""
@@ -40,7 +40,7 @@ echo "(Refer to the guide.):"
 echo ""
 read googleapi
 echo ""
-echo "Saved '$googleapi' as your bot's Google API Key."
+echo -e "Saved $googleapi as your bot's Google API Key."
 echo ""
 echo "----------"
 echo ""
@@ -50,7 +50,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read mashapekey
 echo ""
-echo "Saved '$mashapekey' as your bot's Mashape Key.
+echo -e "Saved $mashapekey as your bot's Mashape Key.
 echo ""
 echo "----------"
 echo ""
@@ -60,7 +60,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read osu
 echo ""
-echo "Saved '$osu' as your bot's OSU API Key.
+echo -e "Saved $osu as your bot's OSU API Key.
 echo ""
 echo "----------"
 echo ""
@@ -70,7 +70,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read cleverbot
 echo ""
-echo "Saved '$cleverbot' as your bot's Cleverbot API Key.
+echo -e "Saved $cleverbot as your bot's Cleverbot API Key.
 echo ""
 echo "----------"
 echo ""
@@ -80,7 +80,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read twitchcid
 echo ""
-echo "Saved '$twitchcid' as your bot's Twitch Client ID.
+echo -e "Saved $twitchcid as your bot's Twitch Client ID.
 echo ""
 echo "----------"
 echo ""
@@ -90,7 +90,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read locationiqapi
 echo ""
-echo "Saved '$locationiqapi' as your bot's Location IQ API Key.
+echo -e "Saved $locationiqapi as your bot's Location IQ API Key.
 echo ""
 echo "----------"
 echo ""
@@ -100,7 +100,7 @@ echo "(Refer to the JSON Explanations guide):"
 echo ""
 read timedbapi
 echo ""
-echo "Saved '$timedbapi' as your bot's Timezone DB API Key.
+echo -e "Saved $timedbapi as your bot's Timezone DB API Key.
 echo ""
 echo "----------"
 echo ""
@@ -124,5 +124,5 @@ echo "{
 echo "Credentials setup completed."
 sleep 5
 cd 
-rm $HOME/n-credentials_setup.sh
+rm $root/n-credentials_setup.sh
 exit 0
