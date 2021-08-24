@@ -1,5 +1,9 @@
 #!/bin/sh
 clear
+
+export DOTNET_ROOT=/usr/share/dotnet-arm64
+export PATH=$PATH:/usr/share/dotnet-arm64
+
 echo ""
 echo "Welcome to NadekoBot pi installer. Downloading the latest installer..."
 root=$(pwd)
