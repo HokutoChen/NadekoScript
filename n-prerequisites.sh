@@ -73,7 +73,7 @@ if [ "$OS" = "Ubuntu" ]; then
     elif [ "$VER" = "18.10" ]; then
         supported=1
         VER=18.04
-        echo -e "Using Ubuntu 18.04 Installation scripts.\nIf the installation fails contact NadekoBot support."
+        echo -e "Using Ubuntu 18.04 Installation scripts.\nIf the installation fails contact Hoku."
         sleep 5
     else
         supported=0
@@ -93,35 +93,19 @@ fi
 
 if [ "$supported" = 0 ]; then
     echo -e "Your OS $OS $VER $ARCH looks unsupported to run Microsoft .NET Core. \nExiting..."
-    printf "\e[1;31mContact NadekoBot's support on Discord with screenshot.\e[0m\n"
+    printf "\e[1;31mContact Hoku.\e[0m\n"
     rm n-prereq.sh
     exit 1
 fi
 
 if [ "$OS" = "Linux" ]; then
-    echo -e "Your OS $OS $VER $ARCH probably can run Microsoft .NET Core. \nContact NadekoBot's support on Discord with screenshot."
+    echo -e "Your OS $OS $VER $ARCH probably can run Microsoft .NET Core. \nContact Hoku."
     rm n-prereq.sh
     exit 1
 fi
 
 echo "This installer will download all of the required packages for NadekoBot. It will use about 350MB of space. This might take awhile to download if you do not have a good internet connection.\n"
 echo -e "Would you like to continue? \nYour OS: $OS \nOS Version: $VER \nArchitecture: $ARCH"
-
-while true; do
-    read -p "[y/n]: " yn
-    case $yn in
-        [Yy]* ) clear; echo Running NadekoBot Auto-Installer; sleep 2; break;;
-        [Nn]* ) echo Quitting...; rm n-prereq.sh && exit;;
-        * ) echo "Couldn't get that please type [y] for Yes or [n] for No.";;
-    esac
-done
-
-echo ""
-
-
-
-echo "This installer will download all of the required packages for NadekoBot. It will use about 350MB of space. This might take awhile to download if you do not have a good internet connection.\n"
-echo -e "Your OS: $OS \nOS Version: $VER \nArchitecture: $ARCH \nWould you like to continue?"
 
 while true; do
     read -p "[y/n]: " yn
@@ -152,16 +136,19 @@ if [ "$OS" = "Ubuntu" ]; then
         
      sudo wget https://download.visualstudio.microsoft.com/download/pr/4d323232-ffcc-4c09-a043-a36b554c883e/096822e81dc29383b649cd015d1ff99a/dotnet-sdk-5.0.400-linux-arm64.tar.gz
      sudo wget https://download.visualstudio.microsoft.com/download/pr/0e3da9ad-b838-419a-8ad5-caaff159083f/484d306f2778f15519201178961372bc/aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
+     
      sudo tar zxf dotnet-sdk-5.0.400-linux-arm64.tar.gz
      sudo tar zxf aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
         
      export DOTNET_ROOT=/usr/share/dotnet-arm64
      export PATH=$PATH:/usr/share/dotnet-arm64
+     
      sudo rm dotnet-sdk-5.0.400-linux-arm64.tar.gz aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
+     
      cd
      
-     echo "Installing Git and Redis"
-     sudo apt-get install git redis-server -y
+     echo "Installing Git, Redis and tmux"
+     sudo apt-get install git tmux redis-server -y
         
      echo "Installing music Prerequisites..."
      sudo add-apt-repository ppa:chris-lea/libsodium -y
@@ -170,8 +157,21 @@ if [ "$OS" = "Ubuntu" ]; then
      sudo apt-get install ffmpeg
      sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
      sudo chmod a+rx /usr/local/bin/youtube-dl
-fi
+     
+elif [ "$OS" = "LinuxMint" ]; then
+    if [ "$SVER" = "18" ]; then
+        echo "Installing Git, Redis and Tmux..."
+        sudo apt-get install git tmux redis-server -y
 
+        echo "Installing music prerequisites..."
+        sudo add-apt-repository ppa:chris-lea/libsodium -y
+        sudo apt-get update
+        sudo apt-get install libopus0 opus-tools libopus-dev libsodium-dev snapd -y
+        sudo snap install ffmpeg
+        sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+        sudo chmod a+rx /usr/local/bin/youtube-dl
+    fi
+fi
         
 echo
 echo "NadekoBot Prerequisities Installation completed"
@@ -179,5 +179,5 @@ read -n 1 -s -p "Press any key to continue..."
 sleep 2
 
 cd 
-rm $HOME/n-prerequisites.sh
+rm $root/n-prerequisites.sh
 exit 0
