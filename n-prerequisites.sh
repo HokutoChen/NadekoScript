@@ -157,19 +157,7 @@ if [ "$OS" = "Ubuntu" ]; then
      sudo apt-get install ffmpeg
      sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
      sudo chmod a+rx /usr/local/bin/youtube-dl
-     
-elif [ "$OS" = "LinuxMint" ]; then
-    if [ "$SVER" = "18" ]; then
-        echo "Installing Git, Redis and Tmux..."
-        sudo apt-get install git tmux redis-server -y
-
-        echo "Installing music prerequisites..."
-        sudo add-apt-repository ppa:chris-lea/libsodium -y
-        sudo apt-get update
-        sudo apt-get install libopus0 opus-tools libopus-dev libsodium-dev snapd -y
-        sudo snap install ffmpeg
-        sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
-        sudo chmod a+rx /usr/local/bin/youtube-dl
+    
     fi
 fi
         
