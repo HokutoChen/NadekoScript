@@ -16,6 +16,27 @@ script_run="n-run.sh"
 script_arn="n-arn.sh"
 script_credentials="n-credentials_setup.sh"
 
+# MIGRATION START
+if [ -d "NadekoBot" ]
+then 
+	if [ -d "nadekobot" ]
+	then
+		echo "Both NadekoBot and nadekobot folders exist, migration from 2.x to v3 can't proceed."
+		cd "$root"
+		exit 0
+	fi
+
+	echo "Migrating 2.x to 1.9"
+	mv NadekoBot nadekobot
+	base_migration_folder="nadekobot/src/NadekoBot/bin/Release/netcoreapp2.1"
+	mkdir nadekobot/output
+	cp -rf "$base_migration_folder/data" nadekobot/output/data
+	cp nadekobot/src/NadekoBot/credentials.json nadekobot/output
+
+	echo "Old data migration has been set up. However, you must run options 1, 2 and 3 (in that order) for the migration to properly take effect."
+	sleep 1
+fi
+# MIGRATION END
 
 while [ $choice -eq 9 ]; do
 
@@ -33,12 +54,14 @@ while [ $choice -eq 9 ]; do
 	if [[ $choice -eq 1 ]]; then
       		echo ""
 		echo "Downloading the prerequisites installer script"
+		rm "$root/$script_prerequisites" 1>/dev/null 2>&1
 		wget -N "$base_url/$script_prerequisites" && bash "$root/$script_prerequisites"
 		echo ""
 		choice=9
 	elif [[ $choice -eq 2 ]]; then
                 echo ""
 		echo "Downloading the NadekoBot installer script"
+		rm "$root/$script_install" 1>/dev/null 2>&1
 		wget -N "$base_url/$script_install" && bash "$root/$script_install"
 		echo ""
 		sleep 2s
@@ -46,6 +69,7 @@ while [ $choice -eq 9 ]; do
 	elif [[ $choice -eq 3 ]]; then
                 echo ""
 		echo "Downloading the NadekoBot run script"
+		rm "$root/$script_run" 1>/dev/null 2>&1
 		wget -N "$base_url/$script_run" && bash "$root/$script_run"
 		echo ""
 		sleep 2s
@@ -53,6 +77,7 @@ while [ $choice -eq 9 ]; do
 	elif [[ $choice -eq 4 ]]; then
               	echo ""
 		echo "Downloading the NadekoBot run and auto restart script"
+		rm "$root/$script_arn" 1>/dev/null 2>&1
 		wget -N "$base_url/$script_arn" && bash "$root/$script_arn"
 		echo ""
 		sleep 2s
@@ -60,6 +85,7 @@ while [ $choice -eq 9 ]; do
 	elif [[ $choice -eq 5 ]]; then
 		echo ""
 		echo "Downloading Credentials setup script"
+		rm "$root/$script_credentials_setup" 1>/dev/null 2>&1
 		wget -N "$base_url/$script_credentials" && bash "$root/$script_credentials"
 		echo ""
 		sleep 2s
@@ -78,5 +104,4 @@ while [ $choice -eq 9 ]; do
 done
 
 cd 
-rm $HOME/n-menu.sh
 exit 0
