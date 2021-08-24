@@ -135,11 +135,8 @@ if [ "$OS" = "Ubuntu" ]; then
      cd /usr/share/dotnet-arm64
         
      sudo wget https://download.visualstudio.microsoft.com/download/pr/4d323232-ffcc-4c09-a043-a36b554c883e/096822e81dc29383b649cd015d1ff99a/dotnet-sdk-5.0.400-linux-arm64.tar.gz
-     sleep 10
-     
      sudo wget https://download.visualstudio.microsoft.com/download/pr/0e3da9ad-b838-419a-8ad5-caaff159083f/484d306f2778f15519201178961372bc/aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
-     sleep 10
-     
+
      sudo tar zxf dotnet-sdk-5.0.400-linux-arm64.tar.gz
      sudo tar zxf aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
      
