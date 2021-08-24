@@ -56,7 +56,7 @@ echo -e "Please enter OSU API Key or Just Press [Enter Key] to skip. (optional) 
 echo ""
 read osu
 echo ""
-echo Alright saved \'$osu\' as your bot\'s OSU API Key.
+echo -e "Saved $osu as your bot OSU API Key."
 echo ""
 echo "----------"
 echo ""
@@ -65,7 +65,7 @@ echo -e "Please enter Cleverbot API Key or Just Press [Enter Key] to skip. (opti
 echo ""
 read cleverbot
 echo ""
-echo Alright saved \'$cleverbot\' as your bot\'s Cleverbot API Key.
+echo -e "Saved $cleverbot as your bot Cleverbot API Key."
 echo ""
 echo "----------"
 echo ""
@@ -74,7 +74,7 @@ echo -e "Please enter Twitch Client ID or Just Press [Enter Key] to skip. (optio
 echo ""
 read twitchcid
 echo ""
-echo -e "Saved $twitchcid as your bot Twitch Client ID.
+echo -e "Saved $twitchcid as your bot Twitch Client ID."
 echo ""
 echo "----------"
 echo ""
@@ -83,7 +83,7 @@ echo -e "Please enter Location IQ Api Key or Just Press [Enter Key] to skip. (op
 echo ""
 read locationiqapi
 echo ""
-echo -e "Saved $locationiqapi as your bot Location IQ API Key.
+echo -e "Saved $locationiqapi as your bot Location IQ API Key."
 echo ""
 echo "----------"
 echo ""
