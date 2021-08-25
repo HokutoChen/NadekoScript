@@ -142,10 +142,15 @@ if [ "$OS" = "Ubuntu" ]; then
      
      sudo rm dotnet-sdk-5.0.400-linux-arm64.tar.gz aspnetcore-runtime-5.0.9-linux-arm64.tar.gz
         
+     cd
+     
      export DOTNET_ROOT=/usr/share/dotnet-arm64
      export PATH=$PATH:/usr/share/dotnet-arm64
      
-     cd
+     echo "# dotnet core wrapper" >> .bashrc
+     echo "export DOTNET_ROOT=/usr/share/dotnet-arm64" >> .bashrc
+     echo "export PATH=$PATH:/usr/share/dotnet-arm64" >> .bashrc
+     echo "export PATH" >> .bashrc
      
      echo "Installing Git, Redis and tmux"
      sudo apt-get install git tmux redis-server -y
